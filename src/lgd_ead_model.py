@@ -92,7 +92,7 @@ def train_and_compare_regressors(X, y):
 
 def main():
     # Define paths
-    data_path = 'data/raw/loan_portfolio.csv'
+    data_path = 'data/processed/clean_loan_portfolio.csv'
     model_dir = 'models/'
     
     # Execute pipeline

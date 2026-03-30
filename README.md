@@ -1,30 +1,30 @@
-# End-to-End Credit Risk Modeling Framework
+# Risk Sentinel: End-to-End Credit Risk ML Framework 🏦
 
 ## Overview
-This repository contains a comprehensive, end-to-end Credit Risk Modeling suite. It spans granular loan-level Expected Credit Loss (ECL) calculations (PD, LGD, EAD), cohort-based vintage analysis, corporate ratings migration (Markov chains), and macroeconomic stress testing.
+**Risk Sentinel** is a comprehensive Credit Risk Management platform designed for financial institutions. It bridges the gap between raw loan data and executive decision-making using Machine Learning (Gradient Boosting/Random Forest), Markov Chain transition modeling, and regulatory-style stress testing.
 
-## Datasets Used
-* **Loan Portfolio (`loan_portfolio.csv`)**: 50k loan facilities with borrower financials, credit scores, and default flags used for core ECL modeling.
-* **Portfolio Metrics (`portfolio_metrics.csv`)**: Time-series aggregate risk metrics correlated with macroeconomic indicators.
-* **Vintage Analysis (`vintage_analysis.csv`)**: Cohort tracking of default rates over time.
-* **Credit Ratings (`credit_ratings.csv`)**: Historical ratings transitions for 18k corporate issuers used to generate Transition Matrices.
-* **Macro Stress Scenarios (`macro_stress_scenarios.csv`)**: Stressed PD/LGD outputs based on baseline, GFC-like, and COVID-like economic shocks.
+The framework features a live **Streamlit Dashboard** that allows users to simulate new loans and visualize portfolio-wide impact under economic shocks.
 
-## Model Architecture
-The framework is divided into four primary modules:
-1. **Expected Credit Loss (ECL) Engine**:
-   - **PD Model**: Predicts the Probability of Default using borrower financials and credit scores (Logistic Regression / Random Forest).
-   - **LGD Model**: Estimates Loss Given Default based on collateral types and recovery rates (Fractional Logit / Beta Regression).
-   - **EAD Model**: Calculates Exposure at Default using amortization schedules and credit conversion factors (CCF).
-2. **Transition Matrix Generator**: Calculates annual migration probabilities of corporate credit ratings using a discrete-time Markov Chain approach.
-3. **Vintage & Cohort Analytics**: Tracks and visualizes cumulative and marginal default rates across origination quarters.
-4. **Macro Stress Testing**: Overlays economic shocks (GDP, Unemployment, Interest Rates) onto baseline risk parameters to calculate stressed expected losses.
+## 🚀 Interactive Dashboard
+The project includes a high-performance Streamlit application with the following features:
+* **Portfolio Overview**: Real-time KPIs (EAD, Avg Coupon, Default Rates).
+* **Live PD Pricing Engine**: An interactive simulator where users can input borrower financials to get a real-time Probability of Default (PD) and Credit Rating from our trained ML model.
+* **Stress Testing Visualizer**: Graphical analysis of Expected Loss (EL) jumps under COVID-like and GFC-like scenarios.
 
-## Installation
-1. Clone the repository: `git clone https://github.com/yourusername/end-to-end-credit-risk.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Place the raw datasets into the `data/raw/` directory.
+## 🛠️ Framework Architecture
+The system is built as a modular Python pipeline:
+1.  **ETL (`data_processing.py`)**: Automates cleaning and feature engineering.
+2.  **PD Model (`pd_model.py`)**: A classification pipeline comparing 4 models to predict default.
+3.  **LGD Model (`lgd_ead_model.py`)**: A regression pipeline estimating Loss Given Default.
+4.  **Transition Matrix (`transition_matrix.py`)**: Markov Chain migration analysis.
+5.  **Stress Testing (`stress_testing.py`)**: Macro-economic scenario aggregation.
 
-## Usage
-*Run the ECL pipeline:*
-`python src/pd_model.py`
+## 📂 Data Reference
+The data used in this project is sourced from the [Credit Risk Dataset (50k loans, 10 sectors)](https://www.kaggle.com/datasets/sergionefedov/credit-risk-dataset-50k-loans-10-sectors) by **Sergio Nefedov**. It contains a rich set of features including borrower leverage, debt-to-equity ratios, and historical default flags across diverse industries.
+
+## ⚙️ Installation & Usage
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Katlego4DataScience/end-to-end-credit-risk.git](https://github.com/Katlego4DataScience/end-to-end-credit-risk.git)
+   cd end-to-end-credit-risk
